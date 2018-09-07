@@ -21,12 +21,12 @@ def get_json(file):
         return json.load(f)
 
 
-def reset_device(dut_ip, dut_name, dut_password, reboot_cmd):
+def reset_device(dut_ip, dut_name, dut_password, dut_reboot_cmd):
     for i in range(SSH_ATTEMPTS):
         try:
             ssh = pxssh.pxssh(timeout=None, ignore_sighup=False)
             ssh.login(dut_ip, dut_name, dut_password)
-            ssh.sendline(reboot_cmd)
+            ssh.sendline(dut_reboot_cmd)
             ssh.prompt()
             ssh.logout()
             break
@@ -42,24 +42,24 @@ def run_test(test, dut_host, pb_device):
     dut_name = dut_host["username"]
     dut_password = dut_host["password"]
     dut_wakeword = dut_host["wakeword"]
-    dut_reboot_cmd = dut_host["reboot_cmd"]
+    dut_reboot_cmd = dut_host["dut_reboot_cmd"]
 
     for iteration in test['iterations']:
-        for audio_track in test['audio_tracks']:
-            for environment_audio_track in test['environment_audio_tracks']:
+        for dut_audio_track in test['dut_audio_tracks']:
+            for env_audio_track in test['env_audio_tracks']:
 
                 test_label = "{}_{}".format(datetime.now().strftime('%Y%m%d'), dut_label)
                 ssh_logger = log_utils.get_logger(test_label, OUTPUT_PATH)
                 rec_ssh_logger = log_utils.get_logger("{}_rec".format(test_label), OUTPUT_PATH)
-                track_name = "{}_{}_{}_Take{}.wav".format(dut_label, (environment_audio_track.split('.')[0]).split('/')[-1], (audio_track.split('.')[0]).split('/')[-1],  iteration)
-                play_cmd = "{}{}".format(test['play_cmd'], audio_track)
+                track_name = "{}_{}_{}_Take{}.wav".format(dut_label, (env_audio_track.split('.')[0]).split('/')[-1], (dut_audio_track.split('.')[0]).split('/')[-1],  iteration)
+                dut_play_cmd = "{}{}".format(test['dut_play_cmd'], dut_audio_track)
 
                 aplay_runner = ssh_runner.SshRunner(test_label,
                                                dut_ip,
                                                dut_name,
                                                dut_password,
                                                dut_wakeword,
-                                               play_cmd,
+                                               dut_play_cmd,
                                                track_name,
                                                ssh_logger)
 
@@ -68,7 +68,7 @@ def run_test(test, dut_host, pb_device):
                                                dut_name,
                                                dut_password,
                                                dut_wakeword,
-                                               "{}{}".format(test['rec_cmd'], track_name),
+                                               "{}{}".format(test['dut_rec_cmd'], track_name),
                                                track_name,
                                                rec_ssh_logger)
 
@@ -82,7 +82,7 @@ def run_test(test, dut_host, pb_device):
 
                     time.sleep(float(test['delay_after_dut_audio']))
 
-                    play_wav.play_wav(environment_audio_track, pb_device)
+                    play_wav.play_wav(env_audio_track, pb_device)
                     aplay_runner.stop()
                     arecord_runner.stop()
                     time.sleep(1)
@@ -112,7 +112,7 @@ def main():
         print "Error parsing JSON file!"
         raise
 
-    pb_device = input_dict['dut']['device']
+    pb_device = input_dict['env_audio_host']['device']
     dut_host = input_dict['dut_host']
     tests = input_dict['tests']
 

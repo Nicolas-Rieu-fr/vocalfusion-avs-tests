@@ -1,24 +1,24 @@
 {
-  "dut":{
-     "device":"xCORE USB Audio 2.0"
+  "env_audio_host":{
+     "env_audio_speakers":"xCORE USB Audio 2.0"
   },
   "dut_host":{
       "label":"InHouse_VF_222_v1.1_20180903",
-      "ip":"10.128.29.6",
-      "username":"lucianom",
-      "password":"password",
+      "ip":"",
+      "username":"",
+      "password":"",
       "wakeword":"beginIndex",
-      "reboot_cmd":"~/xmosdfu 0x13 --reboot"
+      "dut_reboot_cmd":"~/xmosdfu 0x13 --reboot"
   },
   "tests":[
     {
-        "play_cmd":"play ",
-        "rec_cmd":"rec -b 24 -r 48000 -c 8 ~/Documents/XMOS_VF_v1_1/",
+        "dut_play_cmd":"play ",
+        "dut_rec_cmd":"rec -b 24 -r 48000 -c 8 ~/Documents/XMOS_VF_v1_1/",
         "delay_after_dut_audio":"20",
-        "environment_audio_tracks":[
+        "env_audio_tracks":[
             "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_65dB.wav"
           ],
-        "audio_tracks":[
+        "dut_audio_tracks":[
             "~/XMOS_Test_Audio/XMOS_DUT1_80dB.wav"
           ],
         "iterations":[1, 2, 3]
