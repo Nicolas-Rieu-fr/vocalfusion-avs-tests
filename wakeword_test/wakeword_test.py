@@ -36,23 +36,23 @@ def reset_device(dut_ip, dut_name, dut_password, reboot_cmd):
                 raise
 
 
-def run_test(test, dut, pb_device):
-    dut_label = dut["label"]
-    dut_ip = dut["ip"]
-    dut_name = dut["username"]
-    dut_password = dut["password"]
-    dut_wakeword = dut["wakeword"]
-    dut_reboot_cmd = dut["reboot_cmd"]
+def run_test(test, dut_host, pb_device):
+    dut_label = dut_host["label"]
+    dut_ip = dut_host["ip"]
+    dut_name = dut_host["username"]
+    dut_password = dut_host["password"]
+    dut_wakeword = dut_host["wakeword"]
+    dut_reboot_cmd = dut_host["reboot_cmd"]
 
     for iteration in test['iterations']:
-        for dut_file in test['dut_files']:
-            for test_file in test['files']:
+        for audio_track in test['audio_tracks']:
+            for environment_audio_track in test['environment_audio_tracks']:
 
                 test_label = "{}_{}".format(datetime.now().strftime('%Y%m%d'), dut_label)
                 ssh_logger = log_utils.get_logger(test_label, OUTPUT_PATH)
                 rec_ssh_logger = log_utils.get_logger("{}_rec".format(test_label), OUTPUT_PATH)
-                track_name = "{}_{}_{}_Take{}.wav".format(dut_label, (test_file.split('.')[0]).split('/')[-1], (dut_file.split('.')[0]).split('/')[-1],  iteration)
-                play_cmd = "{}{}".format(test['play_cmd'], dut_file)
+                track_name = "{}_{}_{}_Take{}.wav".format(dut_label, (environment_audio_track.split('.')[0]).split('/')[-1], (audio_track.split('.')[0]).split('/')[-1],  iteration)
+                play_cmd = "{}{}".format(test['play_cmd'], audio_track)
 
                 aplay_runner = ssh_runner.SshRunner(test_label,
                                                dut_ip,
@@ -82,7 +82,7 @@ def run_test(test, dut, pb_device):
 
                     time.sleep(float(test['delay_after_dut_audio']))
 
-                    play_wav.play_wav(test_file, pb_device)
+                    play_wav.play_wav(environment_audio_track, pb_device)
                     aplay_runner.stop()
                     arecord_runner.stop()
                     time.sleep(1)
@@ -112,8 +112,8 @@ def main():
         print "Error parsing JSON file!"
         raise
 
-    pb_device = input_dict['playback']['device']
-    dut = input_dict['dut']
+    pb_device = input_dict['dut']['device']
+    dut_host = input_dict['dut_host']
     tests = input_dict['tests']
 
     for test in tests:
@@ -122,8 +122,7 @@ def main():
             print "{} {}".format(i, test[i])
         print "\n *** \n"
 
-        run_test(test, dut, pb_device)
-
+        run_test(test, dut_host, pb_device)
 
 
 if __name__ == '__main__':
