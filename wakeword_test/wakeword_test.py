@@ -112,7 +112,7 @@ def main():
         print "Error parsing JSON file!"
         raise
 
-    pb_device = input_dict['env_audio_host']['device']
+    pb_device = input_dict['env_audio_host']['env_audio_speakers']
     dut_host = input_dict['dut_host']
     tests = input_dict['tests']
 
