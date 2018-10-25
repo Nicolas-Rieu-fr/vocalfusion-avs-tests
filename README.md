@@ -15,9 +15,7 @@ Tutorial to run XMOS test suite
 
   a) The 3 speach speakers and the noise Speaker are connected to an External USB audio card. Put its name here (XXXXXXXXX).
 
-"env_audio_host":{
-     "env_audio_speakers":"XXXXXXXXX"
-  }
+
   
   b) Change the label of the Test. It's the first part of the name of every recording. add the ip adress of the DUT host, add the name of the home directory of the dut host ("username"), add the password of the DUT host, if you test VocalFusion, change the dut_reboot_cmd to "~/xmosdfu 0x13 --reboot", if you test Synaptics 2 mics, put nothing (""). Make these changes here :
 
