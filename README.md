@@ -53,85 +53,86 @@ Tutorial to run XMOS test suite
   
 4) config.json exemple :
 
-    {
-      "env_audio_host":{
-         "env_audio_speakers":"xCORE USB Audio 2.0"
-      },
-      "dut_host":{
-         "label":"InHouse_Synaptics_2_mics_20181018",
-          "ip":"10.128.29.6",
-          "username":"lucianom",
-          "password":"password",
-          "wakeword":"beginIndex",
-          "dut_reboot_cmd":""
-     },
-      "tests":[
         {
-            "dut_play_cmd":"play ",
-            "dut_rec_cmd":"rec -b 16 -r 48000 -c 2 ~/Documents/XMOS_Synaptics_2_mics_20181018/",
-            "delay_after_dut_audio":"20",
-            "env_audio_tracks":[
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_65dB.wav"
-              ],
-            "dut_audio_tracks":[
-                "~/XMOS_Test_Audio/XMOS_DUT1_80dB.wav"
-              ],
-            "iterations":[1, 2, 3]
-       },
-        {
-            "dut_play_cmd":"play ",
-            "dut_rec_cmd":"rec -b 16 -r 48000 -c 2 ~/Documents/XMOS_Synaptics_2_mics_20181018/",
-            "delay_after_dut_audio":"20",
-            "env_audio_tracks":[
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Clean.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Clean.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Clean.wav"
-              ],
-            "dut_audio_tracks":[
-                "~/XMOS_Test_Audio/XMOS_DUT1_70dB.wav",
-                "~/XMOS_Test_Audio/XMOS_DUT1_80dB.wav",
-                "~/XMOS_Test_Audio/XMOS_DUT1_90dB.wav"
-              ],
-            "iterations":[1, 2, 3]
-        },
-        {
-           "dut_play_cmd":"play ",
-            "dut_rec_cmd":"rec -b 16 -r 48000 -c 2 ~/Documents/XMOS_Synaptics_2_mics_20181018/",
-            "delay_after_dut_audio":"20",
-            "env_audio_tracks":[
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Clean.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_60dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_65dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_70dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_80dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_60dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_65dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_70dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_80dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Clean.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_60dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_65dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_70dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_80dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_60dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_65dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_70dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_80dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Clean.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_60dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_65dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_70dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_80dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_60dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_65dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_70dB.wav",
-                "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_80dB.wav"
-              ],
-            "dut_audio_tracks":[
-               ""
-              ],
-            "iterations":[1, 2, 3]
+          "env_audio_host":{
+              "env_audio_speakers":"xCORE USB Audio 2.0"
+          },
+          "dut_host":{
+              "label":"InHouse_Synaptics_2_mics_20181018",
+              "ip":"10.128.29.6",
+              "username":"lucianom",
+              "password":"password",
+              "wakeword":"beginIndex",
+              "dut_reboot_cmd":""
+          },
+          "tests":[
+            {
+                "dut_play_cmd":"play ",
+                "dut_rec_cmd":"rec -b 16 -r 48000 -c 2 ~/Documents/XMOS_Synaptics_2_mics_20181018/",
+                "delay_after_dut_audio":"20",
+                "env_audio_tracks":[
+                    "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_65dB.wav"
+                  ],
+                "dut_audio_tracks":[
+                    "~/XMOS_Test_Audio/XMOS_DUT1_80dB.wav"
+                  ],
+               "iterations":[1, 2, 3]
+            },
+              {
+                "dut_play_cmd":"play ",
+               "dut_rec_cmd":"rec -b 16 -r 48000 -c 2 ~/Documents/XMOS_Synaptics_2_mics_20181018/",
+                "delay_after_dut_audio":"20",
+                "env_audio_tracks":[
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Clean.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Clean.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Clean.wav"
+                  ],
+                "dut_audio_tracks":[
+                   "~/XMOS_Test_Audio/XMOS_DUT1_70dB.wav",
+                   "~/XMOS_Test_Audio/XMOS_DUT1_80dB.wav",
+                   "~/XMOS_Test_Audio/XMOS_DUT1_90dB.wav"
+                  ],
+               "iterations":[1, 2, 3]
+            },
+           {
+               "dut_play_cmd":"play ",
+               "dut_rec_cmd":"rec -b 16 -r 48000 -c 2 ~/Documents/XMOS_Synaptics_2_mics_20181018/",
+               "delay_after_dut_audio":"20",
+               "env_audio_tracks":[
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Clean.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_60dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_65dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_70dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise1_80dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_60dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_65dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_70dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc1_Noise2_80dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Clean.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_60dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_65dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_70dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise1_80dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_60dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_65dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_70dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc2_Noise2_80dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Clean.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_60dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_65dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_70dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise1_80dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_60dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_65dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_70dB.wav",
+                   "/Users/xmos/XMOS_Test_Audio/Loc3_Noise2_80dB.wav"
+                 ],
+                "dut_audio_tracks":[
+                    ""
+                  ],
+               "iterations":[1, 2, 3]
+           }
+         ]
         }
-      ]
-    }
+
 
