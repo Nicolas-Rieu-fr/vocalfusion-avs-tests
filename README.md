@@ -51,7 +51,7 @@ Tutorial to run XMOS test suite
   a) On the terminal, go to the folder where wakeword_test.py is located.
   b) Run "python wakeword_test.py config.json" on the terminal
   
-config.json exemple :
+4) config.json exemple :
 
     {
       "env_audio_host":{
@@ -133,5 +133,5 @@ config.json exemple :
             "iterations":[1, 2, 3]
         }
       ]
-}
+    }
 
