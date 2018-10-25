@@ -7,8 +7,11 @@ Tutorial to run XMOS test suite
   a) Create your recording folder in ~/Documents/ in the dut_host laptop (can be any name related to the DUT).
   
   b) Create the DUT_audio_tracks folder (called XMOS_Test_Audio) in the home directory of the DUT Host (laptop).
+  
   c) Put the DUT audio tracks in this DUT_audio_tracks folder.
+  
   d) Create the env_audio_tracks folder (called XMOS_Test_Audio) in the Environment Audio Host (laptop) here : /Users/USER_NAME/XMOS_Test_Audio (USER_NAME is the name of the home directory)
+  
   e) Put the environments audio tracks in this env_audio_tracks folder
 
 
@@ -50,6 +53,7 @@ Tutorial to run XMOS test suite
 3) Run the test
     
   a) On the terminal, go to the folder where wakeword_test.py is located.
+  
   b) Run "python wakeword_test.py config.json" on the terminal
   
 4) config.json exemple :
